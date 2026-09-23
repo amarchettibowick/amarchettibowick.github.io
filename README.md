@@ -20,24 +20,24 @@ loads instantly and looks the same everywhere.
   line between a label and a value — a nod to a printed table of contents.
 
 ## Files
-- `index.html` — home page (bio, selected papers)
-- `research.html` — full publications & working papers
-- `cv.html` — CV sections (plus a download button for a PDF)
-- `contact.html` — email and profile links
+- `index.html` — home page (bio, job market paper, CV download, email)
+- `research.html` — job market paper, work in progress, resting papers
+- `data.html` — datasets
 - `style.css` — shared styling for all pages
+- `cv.pdf` — your CV (generated for you; replace with an updated version any time)
 
 ## To customize
-Everything in `[brackets]` is a placeholder. Find-and-replace across all four
-`.html` files:
+Everything in `[brackets]` is a placeholder. Find-and-replace across all `.html` files:
 - `[Your Name]`
 - `[Assistant Professor of Economics]`, `[University Name]`
 - Bio paragraphs on `index.html`
-- Paper titles, coauthors, and abstracts on `index.html` and `research.html`
-- CV entries on `cv.html`
-- Email and profile links on `contact.html`
+- Email address (`you@university.edu`) on `index.html`
 
-To enable the "Download CV (PDF)" button, add a file named `cv.pdf` to this
-same folder.
+To update your CV, replace `cv.pdf` with a new export — the "Download CV" button on the
+home page always points to that filename, so no HTML changes are needed.
+
+To add datasets, add another `<div class="paper">` block on `data.html`, following the
+existing entry as a template, and add the actual data file to this same folder.
 
 ## Publishing with GitHub Pages
 1. Add these files to the root of your repo (or a `docs/` folder — whichever

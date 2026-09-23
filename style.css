@@ -2,7 +2,7 @@
    Tokens — Manuscript / Walnut, warm
 --------------------------------------------- */
 :root {
-  --paper: #F7F3EC;
+  --paper: #F7F6F3;
   --ink: #3B2A20;
   --accent: #6B3A20;
   --accent-soft: #EFE3D5;
@@ -76,8 +76,9 @@ nav a.current { color: var(--ink); border-bottom-color: var(--accent); }
    Hero (home page only)
 --------------------------------------------- */
 .hero { padding: 3rem 0 0.5rem; }
-.eyebrow { font-style: italic; color: var(--muted); font-size: 0.95rem; margin: 0 0 0.4rem; }
-h1.name { font-family: var(--serif); font-weight: 600; font-size: 2.6rem; margin: 0 0 0.3rem; line-height: 1.12; }
+.hero-top { display: flex; align-items: center; justify-content: flex-start; gap: 4rem; flex-wrap: wrap; }
+.hero-photo { width: 150px; height: 175px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }.eyebrow { font-style: italic; color: var(--muted); font-size: 0.95rem; margin: 0 0 0.4rem; }
+h1.name { font-family: var(--serif); font-weight: 600; font-size: 2rem; margin: 0 0 0.3rem; line-height: 1.15; }
 .role { font-style: italic; color: var(--muted); font-size: 1.1rem; margin: 0; }
 
 /* ---------------------------------------------
@@ -103,8 +104,7 @@ section > h2 {
 }
 section:first-of-type > h2 { border-top: none; padding-top: 0; }
 
-.bio { font-size: 1.0625rem; line-height: 1.75; text-align: justify; max-width: 62ch; margin: 0 0 1.1rem; }
-.bio + .bio { text-indent: 1.5em; }
+.bio { font-size: 1.0625rem; line-height: 1.75; text-align: justify; margin: 0 0 1.1rem; }
 .bio.dropcap::first-letter {
   font-size: 3.3em;
   float: left;
@@ -128,21 +128,12 @@ section:first-of-type > h2 { border-top: none; padding-top: 0; }
 /* ---------------------------------------------
    Numbered paper entries
 --------------------------------------------- */
-.paper-list { counter-reset: paper; padding: 0; margin: 0; list-style: none; }
-.paper { position: relative; counter-increment: paper; padding: 1rem 0 1rem 2.25rem; border-top: 1px solid var(--rule); }
+.paper-list { padding: 0; margin: 0; list-style: none; }
+.paper { position: relative; padding: 1rem 0; border-top: 1px solid var(--rule); }
 .paper:first-child { border-top: none; padding-top: 0; }
-.paper:first-child::before { top: 0; }
-.paper::before {
-  content: counter(paper) '.';
-  position: absolute;
-  left: 0; top: 1rem;
-  font-weight: 600;
-  color: var(--accent);
-  font-size: 1.05rem;
-}
 .paper h3 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; margin: 0 0 0.3rem; }
 .paper .meta { font-style: italic; color: var(--muted); font-size: 0.9rem; margin: 0 0 0.5rem; }
-.paper p.abstract { text-align: justify; font-size: 0.95rem; max-width: 64ch; margin: 0 0 0.5rem; }
+.paper p.abstract { text-align: justify; font-size: 0.95rem; margin: 0 0 0.5rem; }
 .paper .links a { font-size: 0.85rem; margin-right: 1.25rem; text-decoration: none; border-bottom: 1px solid var(--accent); }
 
 /* ---------------------------------------------
@@ -198,4 +189,6 @@ section:first-of-type > h2 { border-top: none; padding-top: 0; }
   h1.name { font-size: 2.1rem; }
   nav { gap: 1.1rem; }
   .wrap { padding: 0 1.5rem 0 2rem; }
+  .hero-photo { width: 92px; height: 120px; margin-top: 1.5rem; }
+  .hero-top { flex-direction: column; align-items: flex-start; }
 }
