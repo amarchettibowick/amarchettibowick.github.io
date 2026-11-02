@@ -6,6 +6,26 @@
 <title>Research — Alessandro Marchetti-Bowick</title>
 <meta name="description" content="Publications and working papers by Alessandro Marchetti-Bowick on safety net programs and public economics.">
 <link rel="stylesheet" href="style.css">
+<style>
+/* Click a paper's title to show or hide its abstract */
+.paper .title-toggle {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.paper .title-toggle::before { content: "\25B8\00a0"; color: var(--accent); }
+.paper .title-toggle[aria-expanded="true"]::before { content: "\25BE\00a0"; }
+.paper .title-toggle:hover { color: var(--accent); }
+.paper .abstract[hidden] { display: none; }
+</style>
+
 </head>
 <body>
 <div class="margin-rule" aria-hidden="true"></div>
@@ -111,5 +131,26 @@
   </div>
 </footer>
 
+<script>
+// Make each paper's title a button that shows or hides its abstract
+document.querySelectorAll('.paper').forEach(function (paper) {
+  var abs = paper.querySelector('.abstract');
+  var h3 = paper.querySelector('h3');
+  if (!abs || !h3) return;
+  var btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'title-toggle';
+  btn.innerHTML = h3.innerHTML.trim();
+  h3.textContent = '';
+  h3.appendChild(btn);
+  abs.hidden = true;
+  btn.setAttribute('aria-expanded', 'false');
+  btn.addEventListener('click', function () {
+    var open = abs.hidden;
+    abs.hidden = !open;
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+});
+</script>
 </body>
 </html>
