@@ -7,6 +7,14 @@
 <meta name="description" content="Publications and working papers by Alessandro Marchetti-Bowick on safety net programs and public economics.">
 <link rel="stylesheet" href="style.css">
 <style>
+/* Tighter spacing under the job market paper */
+main section:first-of-type .paper { padding-bottom: 0.75rem; }
+main section:nth-of-type(2) { margin-top: 1rem; }
+/* Tighter spacing under work in progress */
+main section:nth-of-type(2) .paper:last-child { padding-bottom: 0.75rem; }
+main section:nth-of-type(3) { margin-top: 1rem; }
+/* No divider lines between papers */
+.paper { border-top: none; }
 /* Click a paper's title to show or hide its abstract */
 .paper .title-toggle {
   display: block;
