@@ -32,6 +32,17 @@ main section:nth-of-type(3) { margin-top: 1rem; }
 .paper .title-toggle[aria-expanded="true"]::before { content: "\25BE\00a0"; }
 .paper .title-toggle:hover { color: var(--accent); }
 .paper .abstract[hidden] { display: none; }
+.paper .arrow-toggle {
+  margin: 0;
+  padding: 0 0.1rem 0 0;
+  background: none;
+  border: 0;
+  font: inherit;
+  color: var(--accent);
+  cursor: pointer;
+}
+.paper .arrow-toggle::before { content: "\25B8\00a0"; }
+.paper .arrow-toggle[aria-expanded="true"]::before { content: "\25BE\00a0"; }
 </style>
 
 </head>
@@ -64,14 +75,11 @@ main section:nth-of-type(3) { margin-top: 1rem; }
 
       <div class="paper-list">
         <div class="paper">
-          <h3>30 Years of Welfare-to-Work: Intergenerational Impacts of Welfare Reform</h3>
+          <h3><a href="MarchettiBowick_JMP.pdf">30 Years of Welfare-to-Work: Intergenerational Impacts of Welfare Reform</a></h3>
           <p class="meta">Job market paper</p>
           <p class="abstract">
             How does the design of the social safety net shape social mobility? We study this question in the context of the Personal Responsibility and Work Opportunity Reconciliation Act (PRWORA), which eliminated federal entitlement to cash assistance. Using confidential Census Bureau data, we document the long-run impacts of this elimination on individuals who were children at the time of reform. Our research design compares siblings born to the same mother who were different ages at the time of reform, and contrasts these within-family differences between families more and less likely to have received welfare. We find that exposure to welfare reform decreased childhood welfare receipt and increased parental employment, leaving net family income unchanged on average. In young adulthood, higher childhood exposure translates to increases in both earnings and employment. While employment gains persist, gains in earnings are transitory, disappearing by age 24. We also find reductions in teen births, teen arrests, and receipt of housing assistance but no discernible impacts on mortality or participation in other safety net programs. Effects are proportional to parents' time spent working, suggesting that effects are driven by children emulating their parents.
           </p>
-          <div class="links">
-            <a href="MarchettiBowick_JMP.pdf">Draft (PDF)</a>
-          </div>
         </div>
       </div>
     </section>
@@ -150,10 +158,17 @@ document.querySelectorAll('.paper').forEach(function (paper) {
   if (!abs || !h3) return;
   var btn = document.createElement('button');
   btn.type = 'button';
-  btn.className = 'title-toggle';
-  btn.innerHTML = h3.innerHTML.trim();
-  h3.textContent = '';
-  h3.appendChild(btn);
+  if (h3.querySelector('a')) {
+    // title is a link: keep it, and add a small arrow that toggles the abstract
+    btn.className = 'arrow-toggle';
+    btn.setAttribute('aria-label', 'Show or hide abstract');
+    h3.insertBefore(btn, h3.firstChild);
+  } else {
+    btn.className = 'title-toggle';
+    btn.innerHTML = h3.innerHTML.trim();
+    h3.textContent = '';
+    h3.appendChild(btn);
+  }
   abs.hidden = true;
   btn.setAttribute('aria-expanded', 'false');
   btn.addEventListener('click', function () {
